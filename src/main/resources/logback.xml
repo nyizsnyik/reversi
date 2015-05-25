@@ -1,0 +1,58 @@
+<!-- 
+	Ha a scan attribútum értékét "true"-ra módosítjuk, akkor a Logback
+	percenként ellenőrzi, hogy változott-e a konfigurációs állomány.
+	Változás esetén megfelelően módosítja a beállításokat. Az állomány
+	így akár futásidőben is módosítható.
+-->
+<configuration scan="true">
+
+	<!-- A konzolon csak az error szinű vagy annál magasabb szintű üzeneteket naplózunk -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!--
+		Az állományba csak adott szintű vagy annál magasabb szintű
+		üzeneteket naplózunk (a jelenlegi beállítás esetén ERROR és
+		WARN szintű üzeneteket)
+	-->
+	<appender name="FILE1" class="ch.qos.logback.core.FileAppender">
+		<file>messageswarn.log</file>
+		<append>false</append>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!--
+		Az állományba mindent naplózunk)
+	-->
+	<appender name="FILE2" class="ch.qos.logback.core.FileAppender">
+		<file>messagesall.log</file>
+		<append>false</append>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ALL</level>
+		</filter>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!--
+		A gyökér logger mindent naplóz (a konzolra és az állományba
+		is)
+	-->
+	<root level="ALL">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE1"/>
+		<appender-ref ref="FILE2"/>
+	</root>
+
+</configuration>
