@@ -29,6 +29,16 @@ public class VezerloTest {
 			{ 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0 } };
+	public int[][] m4 = { { 1, -1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0 } };
+	public int[][] m5 = { { 0, -1, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0 } };
 	
 	@Test
 	public void testgetN() {
@@ -60,7 +70,8 @@ public class VezerloTest {
 	}
 	@Test
 	public void testpontok() {
-		Vezerlo v = new Vezerlo(1,8);
+		Table t = new Table(8);
+		Vezerlo v = new Vezerlo(1,t);
 		assertEquals(0, v.pontok(1, m0));
 		assertEquals(0, v.pontok(-1, m0));
 		assertEquals(2, v.pontok(1, m1));
@@ -70,11 +81,14 @@ public class VezerloTest {
 	}
 	@Test
 	public void testvegeE() {
-		Vezerlo v = new Vezerlo(1,8);
+		Table t = new Table(8);
+		Vezerlo v = new Vezerlo(1,t);
 		assertEquals(true, v.vegeE(m0));
 		assertEquals(false, v.vegeE(m1));
 		assertEquals(false, v.vegeE(m2));
 		assertEquals(true, v.vegeE(m3));
+		assertEquals(false, v.vegeE(m4));
+		assertEquals(true, v.vegeE(m5));
 	}
 	
 	@Test
@@ -82,5 +96,15 @@ public class VezerloTest {
 		Vezerlo v = new Vezerlo(1,8);
 		assertEquals(1, v.jatekos(1));
 		assertEquals(2, v.jatekos(-1));
+	}
+	@Test
+	public void testplay() {
+		Vezerlo v = new Vezerlo(1,8);
+		v.table.table=m0;
+		assertEquals(0, v.Play());
+		v.table.table=m3;
+		assertEquals(2, v.Play());
+		v.table.table=m5;
+		assertEquals(-1, v.Play());
 	}
 }
