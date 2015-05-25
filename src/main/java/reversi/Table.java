@@ -1,12 +1,17 @@
 package reversi;
 
 import java.util.TreeSet;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * 
  * @author nyizsnyik
  * Ez az osztály tartalmatta a játékhoz szükséges táblát és a tábla módosítására és lehérdezésére használható metódusokat.
  */
 public class Table {
+	
+	private static Logger logger = LoggerFactory.getLogger(Table.class);
 	/**
 	 * Maga a tábla
 	 */
@@ -16,6 +21,7 @@ public class Table {
 	 * @param n megadja hányszor hanyas legyen a tábla.
 	 */
 	public Table(int n) {
+		logger.debug("konstruktor meghívva.");
 		this.table = new int[n][n];
 		for (int[] is : table) {
 			for (int j = 0; j < is.length; j++) {
@@ -32,6 +38,7 @@ public class Table {
 	 * @return a táblával.
 	 */
 	public int[][] getTable() {
+		logger.debug("getTable metódus meghívva.");
 		return this.table;
 	}
 	/**
@@ -42,10 +49,13 @@ public class Table {
 	 * @param jatekos az a játékos aki lép.
 	 */
 	public void lep(Kordinata lepes, int lepesx, int lepesy, int jatekos) {
+		logger.debug("lep metódus meghívva.");
 		TreeSet<Kordinata> ts = new TreeSet<Kordinata>();
+		logger.debug("Halmaz létrehozva meghívva.");
 		if (lepesx == 0 && lepesy == 0)
 			this.table[lepes.x][lepes.y] = jatekos;
 		else {
+			logger.debug("Átírandó kordináták gyüjtése.");
 			for (int i = lepes.x + lepesx, j = lepes.y + lepesy; i >= 0
 					&& i < this.table.length && j >= 0 && j < this.table.length
 					&& this.table[i][j] == jatekos * -1; i += lepesx, j += lepesy) {
@@ -54,6 +64,7 @@ public class Table {
 						&& j + lepesy < this.table.length && i + lepesx >= 0
 						&& j + lepesy >= 0
 						&& this.table[i + lepesx][j + lepesy] == jatekos) {
+					logger.debug("Kordináták átírása.");
 					for (Kordinata k : ts) {
 						table[k.x][k.y] = jatekos;
 					}
@@ -66,6 +77,8 @@ public class Table {
 	 * @param t egy <code>Kordinata</code> objektumokat tartalmazó rendezett halmaz.
 	 */
 	public void lehetsegesLesesek(TreeSet<Kordinata> t) {
+		logger.debug("lehetLepesek metódus meghívva.");
+		logger.debug("Lehetséges lépések ábrázolása a táblába.");
 		for (Kordinata kordinata : t) {
 			this.table[kordinata.x][kordinata.y] = 2;
 		}
@@ -74,6 +87,8 @@ public class Table {
 	 * Eltünteti a táblából a 2-es értéketet.
 	 */
 	public void lehetsegesLesesekEltuntet() {
+		logger.debug("lehetLepesekEltuntet metódus meghívva.");
+		logger.debug("Lehetséges lépések eltüntetése a táblából.");
 		for (int i = 0; i < table.length; i++) {
 			for (int j = 0; j < table.length; j++) {
 				if (this.table[i][j] == 2)

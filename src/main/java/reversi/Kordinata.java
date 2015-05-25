@@ -1,11 +1,16 @@
 package reversi;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 
  * @author nyizsnyik A lépéseket ebből az osztályból létrehozott létrehozott
  *         objektumokban tároljuk.
  */
 public class Kordinata implements Comparable<Object> {
+	
+	private static Logger logger = LoggerFactory.getLogger(Kordinata.class);
 	/**
 	 * A lépés első kordinátája.
 	 */
@@ -53,7 +58,7 @@ public class Kordinata implements Comparable<Object> {
 	 *            ez lesz az objektum <code>y</code> adattag értéke.
 	 */
 	Kordinata(int x, int y) {
-		super();
+		logger.debug("konstruktor meghívva.");
 		this.x = x;
 		this.y = y;
 	}

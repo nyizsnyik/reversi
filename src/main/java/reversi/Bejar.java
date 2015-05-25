@@ -2,12 +2,16 @@ package reversi;
 
 import java.util.LinkedList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 
  * @author nyizsnyik 
  * Tábla bejáró és vizsgáló metódusokat tartalmaz.
  */
 public class Bejar {
+	private static Logger logger = LoggerFactory.getLogger(Bejar.class);
 	/**
 	 * A <code>flag1</code> akkor igaz ha meghíváskor a metódus a paraméterként
 	 * kapott játékos korongját találja meg.
@@ -26,6 +30,7 @@ public class Bejar {
 	 * @return ha a korong megfelel az elvárásoknak akkor <code>true</code> ha nem akkor <code>false</code>
 	 */
 	private boolean vizsgal(int aktertek, int jatekos) {
+		logger.debug("vizsgál metódus meghívása megtörtént.");
 		if (aktertek == jatekos || flag1) {
 			flag1 = true;
 			if (aktertek == (jatekos * -1) || flag2) {
@@ -52,6 +57,7 @@ public class Bejar {
 	 * @return <code>jatekos</code>szeszögéből a <code>table</code> táblán lehetséges lépések listája.
 	 */
 	public LinkedList<Kordinata> balJobb(int jatekos, int[][] table) {
+		logger.debug("metódus meghívása metörtént.");
 		flag1 = false;
 		flag2 = false;
 		LinkedList<Kordinata> list = new LinkedList<Kordinata>();
@@ -73,6 +79,7 @@ public class Bejar {
 	 * @return <code>jatekos</code>szeszögéből a <code>table</code> táblán lehetséges lépések listája.
 	 */
 	public LinkedList<Kordinata> jobbBal(int jatekos, int[][] table) {
+		logger.debug("metódus meghívása metörtént.");
 		flag1 = false;
 		flag2 = false;
 		LinkedList<Kordinata> list = new LinkedList<Kordinata>();
@@ -94,6 +101,7 @@ public class Bejar {
 	 * @return <code>jatekos</code>szeszögéből a <code>table</code> táblán lehetséges lépések listája.
 	 */
 	public LinkedList<Kordinata> fentLent(int jatekos, int[][] table) {
+		logger.debug("metódus meghívása metörtént.");
 		flag1 = false;
 		flag2 = false;
 		LinkedList<Kordinata> list = new LinkedList<Kordinata>();
@@ -115,6 +123,7 @@ public class Bejar {
 	 * @return <code>jatekos</code>szeszögéből a <code>table</code> táblán lehetséges lépések listája.
 	 */
 	public LinkedList<Kordinata> lentFent(int jatekos, int[][] table) {
+		logger.debug("metódus meghívása metörtént.");
 		flag1 = false;
 		flag2 = false;
 		LinkedList<Kordinata> list = new LinkedList<Kordinata>();
@@ -136,6 +145,7 @@ public class Bejar {
 	 * @return <code>jatekos</code>szeszögéből a <code>table</code> táblán lehetséges lépések listája.
 	 */
 	public LinkedList<Kordinata> balFentJobbLent(int jatekos, int[][] table) {
+		logger.debug("metódus meghívása metörtént.");
 		flag1 = false;
 		flag2 = false;
 		LinkedList<Kordinata> list = new LinkedList<Kordinata>();
@@ -166,6 +176,7 @@ public class Bejar {
 	 * @return <code>jatekos</code>szeszögéből a <code>table</code> táblán lehetséges lépések listája.
 	 */
 	public LinkedList<Kordinata> jobbFentBalLent(int jatekos, int[][] table) {
+		logger.debug("metódus meghívása metörtént.");
 		flag1 = false;
 		flag2 = false;
 		LinkedList<Kordinata> list = new LinkedList<Kordinata>();
@@ -196,6 +207,7 @@ public class Bejar {
 	 * @return <code>jatekos</code>szeszögéből a <code>table</code> táblán lehetséges lépések listája.
 	 */
 	public LinkedList<Kordinata> balLentJobbFent(int jatekos, int[][] table) {
+		logger.debug("metódus meghívása metörtént.");
 		flag1 = false;
 		flag2 = false;
 		LinkedList<Kordinata> list = new LinkedList<Kordinata>();
@@ -226,6 +238,7 @@ public class Bejar {
 	 * @return <code>jatekos</code>szeszögéből a <code>table</code> táblán lehetséges lépések listája.
 	 */
 	public LinkedList<Kordinata> jobbLentBalFent(int jatekos, int[][] table) {
+		logger.debug("metódus meghívása metörtént.");
 		flag1 = false;
 		flag2 = false;
 		LinkedList<Kordinata> list = new LinkedList<Kordinata>();
