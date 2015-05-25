@@ -18,7 +18,17 @@
 			<email>nyizsnyik.norbert@gmail.com</email>
 		</developer>
 	</developers>
-
+	<inceptionYear>2015</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>   
+    </licenses>
+    <organization>
+        <name>Debreceni Egyetem - Informatika kar</name>
+        <url>http://www.inf.unideb.hu</url>
+    </organization>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
