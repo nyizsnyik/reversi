@@ -15,7 +15,7 @@ public class Table {
 	/**
 	 * Maga a tábla
 	 */
-	private int[][] table;
+	public int[][] table;
 	/**
 	 * Létrehoz egy <code>Table</code> objectumost és beállítja a tábla kézdő helyzetét.
 	 * @param n megadja hányszor hanyas legyen a tábla.
